@@ -1,0 +1,86 @@
+﻿<Window x:Class="Elk.UpdateableLinks.LinkEditForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Elk.UpdateableLinks"
+             mc:Ignorable="d" 
+             WindowStyle="None"
+             Title="Manage Links"
+             Background="Transparent"
+             AllowsTransparency="True"
+             WindowStartupLocation="CenterOwner"
+             Width="400" Height="250">
+    <Window.Resources>
+        <Style x:Key="typicalButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="#FF404040"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#FF404040"/>
+        </Style>
+    </Window.Resources>
+    <Border MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Grid>
+            <!--Main Background-->
+            <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0"/>
+            <Rectangle Fill="#FF404040" Width="1" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="0"/>
+            <Rectangle Fill="#FF404040" Width="1" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0"/>
+            <Rectangle Fill="#FF404040" Height="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0"/>
+            <Rectangle Fill="#FF404040" Height="15" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="0"/>
+
+            <Label Content="Manage Link Buttons" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF404040" FontFamily="Arial" FontWeight="Bold"/>
+
+            <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,35,0,0" FontFamily="Arial" Foreground="#FF404040"/>
+            <TextBox Name="linkNameTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,55,10,0"/>
+            <Label Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,75,0,0" FontFamily="Arial" Foreground="#FF404040"/>
+            <TextBox Name="addressTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,95,10,0"/>
+            <Label Content="ToolTip:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,115,0,0" FontFamily="Arial" Foreground="#FF404040"/>
+            <TextBox Name="tooltipTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,135,10,0"/>
+            <Label Content="Icon:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,155,0,0" FontFamily="Arial" Foreground="#FF404040"/>
+            <TextBox Name="iconTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,175,10,0"/>
+
+            <!--Buttons-->
+            <Button x:Name="cancelButton" Click="cancelButton_Click" Style="{StaticResource typicalButtonStyle}" MouseEnter="cancelButton_MouseEnter" MouseLeave="cancelButton_MouseLeave"
+                    HorizontalAlignment="Right" Width="80" Height="30" VerticalAlignment="Bottom" Margin="0,0,10,15">
+                <Button.Content>
+                    <Grid Width="80" Height="30">
+                        <Rectangle x:Name="cancelRect" Fill="Transparent"/>
+                        <TextBlock Text="Cancel" TextAlignment="Center"/>
+                    </Grid>
+                </Button.Content>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter Margin="{TemplateBinding Control.Padding}"
+                                          HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                                          SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"
+                                          ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"
+                                          RecognizesAccessKey="True"
+                                          Content="{TemplateBinding ContentControl.Content}"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="okButton" Click="okButton_Click" Style="{StaticResource typicalButtonStyle}" MouseEnter="okButton_MouseEnter" MouseLeave="okButton_MouseLeave"
+                    HorizontalAlignment="Right" Width="80" Height="30" VerticalAlignment="Bottom" Margin="0,0,90,15">
+                <Button.Content>
+                    <Grid Width="80" Height="30">
+                        <Rectangle x:Name="okRect" Fill="Transparent"/>
+                        <TextBlock Text="OK" TextAlignment="Center"/>
+                    </Grid>
+                </Button.Content>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter Margin="{TemplateBinding Control.Padding}"
+                                          HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                                          SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"
+                                          ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"
+                                          RecognizesAccessKey="True"
+                                          Content="{TemplateBinding ContentControl.Content}"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+    </Border>
+</Window>

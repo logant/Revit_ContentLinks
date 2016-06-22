@@ -1,0 +1,70 @@
+﻿[Transaction(TransactionMode.Manual)]
+public class [#LINKCLASSNAME#] : IExternalCommand
+{
+	public string Name 
+	{
+		get { return @"[#LINKNAME#]"; }
+	}
+	public string Address
+	{
+		get { return @"[#LINKADDRESS#]"; }
+	}
+	public string ToolTip
+	{
+		get { return "[#LINKTOOLTIP#]"; }
+	}
+	public string Icon
+	{
+		get { return "[#LINKICON#]"; }
+	}
+	public string ButtonId
+	{
+		get { return "[#BUTTONID#]"; }
+	}
+	public string ButtonType
+	{
+		get { return "[#BUTTONTYPE#]"; }
+	}
+	public string ButtonName
+	{
+		get { return "[#BUTTONNAME#]"; }
+	}
+	public string TabName
+	{
+		get { return "[#TABNAME#]"; }
+	}
+	public string PanelName
+	{
+		get { return "[#PANELNAME#]"; }
+	}
+
+	public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+	{
+		try
+		{	
+			if (Address.StartsWith("%"))
+            {
+                string[] splitAddr = Address.Split(new char[] { '%' });
+                try
+                {
+                    string firstPath = Environment.GetEnvironmentVariable(splitAddr[1]);
+                    string addr = firstPath + splitAddr[2];
+                    Process.Start(addr);
+                }
+                catch
+                {
+                    Process.Start(Address);
+                }
+            }
+            else
+                Process.Start(Address);
+			
+			return Result.Succeeded;
+		}
+		catch (Exception ex)
+		{
+			message = ex.Message;
+			return Result.Failed;
+		}
+	}
+}
