@@ -14,13 +14,25 @@
              Width="800" Height="500"
              MinWidth="700" MinHeight="500">
     <Window.Resources>
-        <Style x:Key="typicalButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="#FF404040"/>
-            <Setter Property="FontSize" Value="14"/>
+        <Style x:Key="TypicalButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="#FF252525" />
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Background" Value="#FF404040"/>
+            <Setter Property="Background" Value="#FFE8E8E8"/>
         </Style>
+        <LinearGradientBrush x:Key="MouseOverBrush" StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#f5f5f5" Offset="0.0"/>
+                <GradientStop Color="#c3c3c3" Offset ="1.0"/>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="DefaultBrush" StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="WhiteSmoke" Offset="0.0"/>
+                <GradientStop Color="#FFE1E1E1" Offset ="1.0"/>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
     </Window.Resources>
     <Border MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
@@ -35,11 +47,22 @@
 
             <Label Content="Panels:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,40,0,0" FontFamily="Arial" Foreground="#FF404040"/>
             <ListView Name="panelsListView" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="10,60,0,270" Width="150" SelectionChanged="panelsListView_SelectionChanged"/>
-            <Button x:Name="panelRemoveButton" Click="panelRemoveButton_Click" Style="{StaticResource typicalButtonStyle}" MouseEnter="panelRemoveButton_MouseEnter" MouseLeave="panelRemoveButton_MouseLeave"
+            <Button x:Name="panelRemoveButton" Click="panelRemoveButton_Click" Style="{StaticResource TypicalButtonStyle}" MouseEnter="panelRemoveButton_MouseEnter" MouseLeave="panelRemoveButton_MouseLeave"
                     HorizontalAlignment="Left" Width="60" Height="30" VerticalAlignment="Bottom" Margin="100,0,0,240">
                 <Button.Content>
                     <Grid Width="60" Height="30">
-                        <Rectangle x:Name="panelRemoveRect" Fill="Transparent"/>
+                        <Rectangle x:Name="panelRemoveRect">
+                            <Rectangle.Style>
+                                <Style TargetType="{x:Type Rectangle}">
+                                    <Setter Property="Fill" Value="{DynamicResource DefaultBrush}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=panelRemoveButton}" Value="True">
+                                            <Setter Property="Fill" Value="{DynamicResource MouseOverBrush}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Rectangle.Style>
+                        </Rectangle>
                         <TextBlock Text="Remove" TextAlignment="Center"/>
                     </Grid>
                 </Button.Content>
@@ -61,11 +84,22 @@
                     <TextBox Name="tabnameTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,25,0,0" Width="125"/>
                     <Label Content="Panel Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,45,0,0" FontFamily="Arial" Foreground="#FF404040"/>
                     <TextBox Name="panelnameTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,65,0,0" Width="125"/>
-                    <Button x:Name="panelAddButton" Click="panelAddButton_Click" Style="{StaticResource typicalButtonStyle}" MouseEnter="panelAddButton_MouseEnter" MouseLeave="panelAddButton_MouseLeave"
+                    <Button x:Name="panelAddButton" Click="panelAddButton_Click" Style="{StaticResource TypicalButtonStyle}" MouseEnter="panelAddButton_MouseEnter" MouseLeave="panelAddButton_MouseLeave"
                             HorizontalAlignment="Left" Width="60" Height="30" VerticalAlignment="Bottom" Margin="70,0,0,80">
                         <Button.Content>
                             <Grid Width="60" Height="30">
-                                <Rectangle x:Name="panelAddRect" Fill="Transparent"/>
+                                <Rectangle x:Name="panelAddRect">
+                                    <Rectangle.Style>
+                                        <Style TargetType="{x:Type Rectangle}">
+                                            <Setter Property="Fill" Value="{DynamicResource DefaultBrush}"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=panelAddButton}" Value="True">
+                                                    <Setter Property="Fill" Value="{DynamicResource MouseOverBrush}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Rectangle.Style>
+                                </Rectangle>
                                 <TextBlock Text="Add" TextAlignment="Center"/>
                             </Grid>
                         </Button.Content>
@@ -87,11 +121,22 @@
 
             <Label Content="Buttons:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="170,40,0,0" FontFamily="Arial" Foreground="#FF404040"/>
             <ListView Name="buttonsListView" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="170,60,0,270" Width="150" SelectionChanged="buttonsListView_SelectionChanged" ItemsSource="{Binding buttonList}" />
-            <Button x:Name="buttonRemoveButton" Click="buttonRemoveButton_Click" Style="{StaticResource typicalButtonStyle}" MouseEnter="buttonRemoveButton_MouseEnter" MouseLeave="buttonRemoveButton_MouseLeave"
+            <Button x:Name="buttonRemoveButton" Click="buttonRemoveButton_Click" Style="{StaticResource TypicalButtonStyle}" MouseEnter="buttonRemoveButton_MouseEnter" MouseLeave="buttonRemoveButton_MouseLeave"
                     HorizontalAlignment="Left" Width="60" Height="30" VerticalAlignment="Bottom" Margin="260,230,0,240">
                 <Button.Content>
                     <Grid Width="60" Height="30">
-                        <Rectangle x:Name="buttonRemoveRect" Fill="Transparent"/>
+                        <Rectangle x:Name="buttonRemoveRect">
+                            <Rectangle.Style>
+                                <Style TargetType="{x:Type Rectangle}">
+                                    <Setter Property="Fill" Value="{DynamicResource DefaultBrush}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=buttonRemoveButton}" Value="True">
+                                            <Setter Property="Fill" Value="{DynamicResource MouseOverBrush}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Rectangle.Style>
+                        </Rectangle>
                         <TextBlock Text="Remove" TextAlignment="Center"/>
                     </Grid>
                 </Button.Content>
@@ -115,11 +160,22 @@
                     </StackPanel>
                     <Label Content="Button Name (opt):" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,60,0,0" FontFamily="Arial" Foreground="#FF404040"/>
                     <TextBox Name="buttonNameTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,85,0,0" Width="125"/>
-                    <Button x:Name="buttonAddButton" Click="buttonAddButton_Click" Style="{StaticResource typicalButtonStyle}" MouseEnter="buttonAddButton_MouseEnter" MouseLeave="buttonAddButton_MouseLeave"
+                    <Button x:Name="buttonAddButton" Click="buttonAddButton_Click" Style="{StaticResource TypicalButtonStyle}" MouseEnter="buttonAddButton_MouseEnter" MouseLeave="buttonAddButton_MouseLeave"
                             HorizontalAlignment="Left" Width="60" Height="30" VerticalAlignment="Top" Margin="70,105,0,0">
                         <Button.Content>
                             <Grid Width="60" Height="30">
-                                <Rectangle x:Name="buttonAddRect" Fill="Transparent"/>
+                                <Rectangle x:Name="buttonAddRect">
+                                    <Rectangle.Style>
+                                        <Style TargetType="{x:Type Rectangle}">
+                                            <Setter Property="Fill" Value="{DynamicResource DefaultBrush}"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=buttonAddButton}" Value="True">
+                                                    <Setter Property="Fill" Value="{DynamicResource MouseOverBrush}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Rectangle.Style>
+                                </Rectangle>
                                 <TextBlock Text="Add" TextAlignment="Center"/>
                             </Grid>
                         </Button.Content>
@@ -140,11 +196,22 @@
 
             <Label Content="Links:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="330,40,0,0" FontFamily="Arial" Foreground="#FF404040"/>
             <ListView Name="linksListView" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="330,60,0,270" Width="150" SelectionChanged="linksListView_SelectionChanged"/>
-            <Button x:Name="linkRemoveButton" Click="linkRemoveButton_Click"  Style="{StaticResource typicalButtonStyle}" MouseEnter="linkRemoveButton_MouseEnter" MouseLeave="linkRemoveButton_MouseLeave"
+            <Button x:Name="linkRemoveButton" Click="linkRemoveButton_Click"  Style="{StaticResource TypicalButtonStyle}" MouseEnter="linkRemoveButton_MouseEnter" MouseLeave="linkRemoveButton_MouseLeave"
                     HorizontalAlignment="Left" Width="60" Height="30" VerticalAlignment="Bottom" Margin="420,230,0,240">
                 <Button.Content>
                     <Grid Width="60" Height="30">
-                        <Rectangle x:Name="linkRemoveRect" Fill="Transparent"/>
+                        <Rectangle x:Name="linkRemoveRect">
+                            <Rectangle.Style>
+                                <Style TargetType="{x:Type Rectangle}">
+                                    <Setter Property="Fill" Value="{DynamicResource DefaultBrush}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=linkRemoveButton}" Value="True">
+                                            <Setter Property="Fill" Value="{DynamicResource MouseOverBrush}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Rectangle.Style>
+                        </Rectangle>
                         <TextBlock Text="Remove" TextAlignment="Center"/>
                     </Grid>
                 </Button.Content>
@@ -160,11 +227,22 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button x:Name="linkEditButton" Click="linkEditButton_Click" Style="{StaticResource typicalButtonStyle}" MouseEnter="linkEditButton_MouseEnter" MouseLeave="linkEditButton_MouseLeave"
+            <Button x:Name="linkEditButton" Click="linkEditButton_Click" Style="{StaticResource TypicalButtonStyle}" MouseEnter="linkEditButton_MouseEnter" MouseLeave="linkEditButton_MouseLeave"
                     HorizontalAlignment="Left" Width="60" Height="30" VerticalAlignment="Bottom" Margin="330,230,0,240">
                 <Button.Content>
                     <Grid Width="60" Height="30">
-                        <Rectangle x:Name="linkEditRect" Fill="Transparent"/>
+                        <Rectangle x:Name="linkEditRect">
+                            <Rectangle.Style>
+                                <Style TargetType="{x:Type Rectangle}">
+                                    <Setter Property="Fill" Value="{DynamicResource DefaultBrush}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=linkEditButton}" Value="True">
+                                            <Setter Property="Fill" Value="{DynamicResource MouseOverBrush}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Rectangle.Style>
+                        </Rectangle>
                         <TextBlock Text="Edit" TextAlignment="Center"/>
                     </Grid>
                 </Button.Content>
@@ -191,11 +269,22 @@
                     <Label Content="Icon:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,125,0,0" FontFamily="Arial" Foreground="#FF404040"/>
                     <TextBox Name="iconTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,145,0,0" Width="125"/>
 
-                    <Button x:Name="linkAddButton" Click="linkAddButton_Click" Style="{StaticResource typicalButtonStyle}" MouseEnter="linkAddButton_MouseEnter" MouseLeave="linkAddButton_MouseLeave"
+                    <Button x:Name="linkAddButton" Click="linkAddButton_Click" Style="{StaticResource TypicalButtonStyle}" MouseEnter="linkAddButton_MouseEnter" MouseLeave="linkAddButton_MouseLeave"
                     HorizontalAlignment="Left" Width="60" Height="30" VerticalAlignment="Bottom" Margin="70,0,0,0">
                         <Button.Content>
                             <Grid Width="60" Height="30">
-                                <Rectangle x:Name="linkAddRect" Fill="Transparent"/>
+                                <Rectangle x:Name="linkAddRect">
+                                    <Rectangle.Style>
+                                        <Style TargetType="{x:Type Rectangle}">
+                                            <Setter Property="Fill" Value="{DynamicResource DefaultBrush}"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=linkAddButton}" Value="True">
+                                                    <Setter Property="Fill" Value="{DynamicResource MouseOverBrush}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Rectangle.Style>
+                                </Rectangle>
                                 <TextBlock Text="Add" TextAlignment="Center"/>
                             </Grid>
                         </Button.Content>
@@ -214,11 +303,22 @@
                 </Grid>
             </GroupBox>
             <!--Buttons-->
-            <Button x:Name="cancelButton" Click="cancelButton_Click" Style="{StaticResource typicalButtonStyle}" MouseEnter="cancelButton_MouseEnter" MouseLeave="cancelButton_MouseLeave"
+            <Button x:Name="cancelButton" Click="cancelButton_Click" Style="{StaticResource TypicalButtonStyle}" MouseEnter="cancelButton_MouseEnter" MouseLeave="cancelButton_MouseLeave"
                     HorizontalAlignment="Right" Width="80" Height="30" VerticalAlignment="Bottom" Margin="0,0,10,15">
                 <Button.Content>
                     <Grid Width="80" Height="30">
-                        <Rectangle x:Name="cancelRect" Fill="Transparent"/>
+                        <Rectangle x:Name="cancelRect">
+                            <Rectangle.Style>
+                                <Style TargetType="{x:Type Rectangle}">
+                                    <Setter Property="Fill" Value="{DynamicResource DefaultBrush}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=cancelButton}" Value="True">
+                                            <Setter Property="Fill" Value="{DynamicResource MouseOverBrush}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Rectangle.Style>
+                        </Rectangle>
                         <TextBlock Text="Cancel" TextAlignment="Center"/>
                     </Grid>
                 </Button.Content>
@@ -234,11 +334,22 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button x:Name="okButton" Click="okButton_Click" Style="{StaticResource typicalButtonStyle}" MouseEnter="okButton_MouseEnter" MouseLeave="okButton_MouseLeave"
+            <Button x:Name="okButton" Click="okButton_Click" Style="{StaticResource TypicalButtonStyle}" MouseEnter="okButton_MouseEnter" MouseLeave="okButton_MouseLeave"
                     HorizontalAlignment="Right" Width="80" Height="30" VerticalAlignment="Bottom" Margin="0,0,90,15">
                 <Button.Content>
                     <Grid Width="80" Height="30">
-                        <Rectangle x:Name="okRect" Fill="Transparent"/>
+                        <Rectangle x:Name="okRect">
+                            <Rectangle.Style>
+                                <Style TargetType="{x:Type Rectangle}">
+                                    <Setter Property="Fill" Value="{DynamicResource DefaultBrush}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=okButton}" Value="True">
+                                            <Setter Property="Fill" Value="{DynamicResource MouseOverBrush}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Rectangle.Style>
+                        </Rectangle>
                         <TextBlock Text="OK" TextAlignment="Center"/>
                     </Grid>
                 </Button.Content>

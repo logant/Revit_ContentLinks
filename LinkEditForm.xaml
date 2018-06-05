@@ -12,13 +12,25 @@
              WindowStartupLocation="CenterOwner"
              Width="400" Height="250">
     <Window.Resources>
-        <Style x:Key="typicalButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="#FF404040"/>
-            <Setter Property="FontSize" Value="14"/>
+        <Style x:Key="TypicalButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="#FF252525" />
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Background" Value="#FF404040"/>
+            <Setter Property="Background" Value="#FFE8E8E8"/>
         </Style>
+        <LinearGradientBrush x:Key="MouseOverBrush" StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#f5f5f5" Offset="0.0"/>
+                <GradientStop Color="#c3c3c3" Offset ="1.0"/>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="DefaultBrush" StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="WhiteSmoke" Offset="0.0"/>
+                <GradientStop Color="#FFE1E1E1" Offset ="1.0"/>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
     </Window.Resources>
     <Border MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
@@ -41,11 +53,22 @@
             <TextBox Name="iconTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,175,10,0"/>
 
             <!--Buttons-->
-            <Button x:Name="cancelButton" Click="cancelButton_Click" Style="{StaticResource typicalButtonStyle}" MouseEnter="cancelButton_MouseEnter" MouseLeave="cancelButton_MouseLeave"
+            <Button x:Name="cancelButton" Click="cancelButton_Click" Style="{StaticResource TypicalButtonStyle}" MouseEnter="cancelButton_MouseEnter" MouseLeave="cancelButton_MouseLeave"
                     HorizontalAlignment="Right" Width="80" Height="30" VerticalAlignment="Bottom" Margin="0,0,10,15">
                 <Button.Content>
                     <Grid Width="80" Height="30">
-                        <Rectangle x:Name="cancelRect" Fill="Transparent"/>
+                        <Rectangle x:Name="cancelRect">
+                            <Rectangle.Style>
+                                <Style TargetType="{x:Type Rectangle}">
+                                    <Setter Property="Fill" Value="{DynamicResource DefaultBrush}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=cancelButton}" Value="True">
+                                            <Setter Property="Fill" Value="{DynamicResource MouseOverBrush}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Rectangle.Style>
+                        </Rectangle>
                         <TextBlock Text="Cancel" TextAlignment="Center"/>
                     </Grid>
                 </Button.Content>
@@ -61,11 +84,22 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button x:Name="okButton" Click="okButton_Click" Style="{StaticResource typicalButtonStyle}" MouseEnter="okButton_MouseEnter" MouseLeave="okButton_MouseLeave"
+            <Button x:Name="okButton" Click="okButton_Click" Style="{StaticResource TypicalButtonStyle}" MouseEnter="okButton_MouseEnter" MouseLeave="okButton_MouseLeave"
                     HorizontalAlignment="Right" Width="80" Height="30" VerticalAlignment="Bottom" Margin="0,0,90,15">
                 <Button.Content>
                     <Grid Width="80" Height="30">
-                        <Rectangle x:Name="okRect" Fill="Transparent"/>
+                        <Rectangle x:Name="okRect">
+                            <Rectangle.Style>
+                                <Style TargetType="{x:Type Rectangle}">
+                                    <Setter Property="Fill" Value="{DynamicResource DefaultBrush}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=okButton}" Value="True">
+                                            <Setter Property="Fill" Value="{DynamicResource MouseOverBrush}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Rectangle.Style>
+                        </Rectangle>
                         <TextBlock Text="OK" TextAlignment="Center"/>
                     </Grid>
                 </Button.Content>

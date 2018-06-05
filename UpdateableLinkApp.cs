@@ -11,6 +11,8 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.Attributes;
 
+using RevitCommon.Attributes;
+
 namespace Elk.UpdateableLinks
 {
     public static class LinkCommon
@@ -537,6 +539,9 @@ namespace Elk.UpdateableLinks
         }
     }
 
+    [ExtApp(Name = "Manage Info Links", Description = "Manage Links to Useful Information", 
+        Guid = "b82cbf5e-5cd8-4389-8991-bb39cc7eabf1", Vendor = "HKSL", VendorDescription = "HKS LINE, www.hksline.com",
+        ForceEnabled = false, Commands = new [] {"Manage Links"})]
     public class ManageLinkApp : IExternalApplication
     {
         static string appPath;
@@ -563,7 +568,7 @@ namespace Elk.UpdateableLinks
                 }
 
                 // Add manage form button
-                PushButtonData managePBD = new PushButtonData("Manage Link Buttons", "Manage\nLinks", typeof(ManageLinkApp).Assembly.Location, "Elk.UpdateableLinks.ManageLinksCmd")
+                PushButtonData managePBD = new PushButtonData("Manage Link Buttons", "Manage\nLinks", typeof(ManageLinkApp).Assembly.Location, typeof(ManageLinksCmd).FullName)
                 {
                     LargeImage = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(Properties.Resources.manageButton.GetHbitmap(), IntPtr.Zero, System.Windows.Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()),
                     ToolTip = "Manage the Updateable Links",
@@ -582,6 +587,9 @@ namespace Elk.UpdateableLinks
         }
     }
 
+    [ExtApp(Name = "Information Links", Description = "Links to HKS Standards and Useful Information",
+        Guid = "4595c82b-efee-405a-bb13-3cd8852bbcf8", Vendor = "HKSL", VendorDescription = "HKS LINE",
+        ForceEnabled = true, Commands = new[] { "Auto-Populated" })]
     public class LinkApp : IExternalApplication
     {
         static string appPath;
