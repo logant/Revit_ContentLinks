@@ -16,9 +16,6 @@ namespace Elk.UpdateableLinks
     /// </summary>
     public partial class ManageLinksForm : Window
     {
-        LinearGradientBrush eBrush = new LinearGradientBrush(Color.FromArgb(255, 195, 195, 195), Color.FromArgb(255, 245, 245, 245), new Point(0, 0), new Point(0, 1));
-        SolidColorBrush lBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-
         string filePath = null;
         List<string> panelNames;
         ObservableCollection<PanelInfo> panels;
@@ -101,16 +98,6 @@ namespace Elk.UpdateableLinks
             catch { }
         }
 
-        private void panelRemoveButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            panelRemoveRect.Fill = eBrush;
-        }
-
-        private void panelRemoveButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            panelRemoveRect.Fill = lBrush;
-        }
-
         private void panelAddButton_Click(object sender, RoutedEventArgs e)
         {
             if(tabnameTextBox.Text != null && tabnameTextBox.Text.Length > 0 && panelnameTextBox.Text != null && panelnameTextBox.Text.Length > 0 && !panelNames.Contains(tabnameTextBox.Text + " - " + panelnameTextBox.Text))
@@ -145,16 +132,6 @@ namespace Elk.UpdateableLinks
             }
         }
 
-        private void panelAddButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            panelAddRect.Fill = eBrush;
-        }
-
-        private void panelAddButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            panelAddRect.Fill = lBrush;
-        }
-
         private void buttonRemoveButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -186,16 +163,6 @@ namespace Elk.UpdateableLinks
                 }
             }
             catch { }
-        }
-
-        private void buttonRemoveButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            buttonRemoveRect.Fill = eBrush;
-        }
-
-        private void buttonRemoveButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            buttonRemoveRect.Fill = lBrush;
         }
 
         private void buttonAddButton_Click(object sender, RoutedEventArgs e)
@@ -271,16 +238,6 @@ namespace Elk.UpdateableLinks
             }
         }
 
-        private void buttonAddButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            buttonAddRect.Fill = eBrush;
-        }
-
-        private void buttonAddButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            buttonAddRect.Fill = lBrush;
-        }
-
         private void linkRemoveButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -318,16 +275,6 @@ namespace Elk.UpdateableLinks
             {
                 MessageBox.Show("Error\n" + ex.ToString());
             }
-        }
-
-        private void linkRemoveButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            linkRemoveRect.Fill = eBrush;
-        }
-
-        private void linkRemoveButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            linkRemoveRect.Fill = lBrush;
         }
 
         private void linkAddButton_Click(object sender, RoutedEventArgs e)
@@ -371,29 +318,9 @@ namespace Elk.UpdateableLinks
                 MessageBox.Show("Select a panel and button before adding a command.");
         }
 
-        private void linkAddButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            linkAddRect.Fill = eBrush;
-        }
-
-        private void linkAddButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            linkAddRect.Fill = lBrush;
-        }
-
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
-        }
-
-        private void cancelButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            cancelRect.Fill = eBrush;
-        }
-
-        private void cancelButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            cancelRect.Fill = lBrush;
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)
@@ -412,16 +339,6 @@ namespace Elk.UpdateableLinks
             {
                 MessageBox.Show("Error\n" + ex.ToString());
             }
-        }
-
-        private void okButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            okRect.Fill = eBrush;
-        }
-
-        private void okButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            okRect.Fill = lBrush;
         }
 
         public void BuildXML()
@@ -592,16 +509,6 @@ namespace Elk.UpdateableLinks
                 }
                 catch { }
             }
-        }
-
-        private void linkEditButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            linkEditRect.Fill = eBrush;
-        }
-
-        private void linkEditButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            linkEditRect.Fill = lBrush;
         }
     }
 }

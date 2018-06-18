@@ -646,8 +646,17 @@ namespace Elk.UpdateableLinks
                 if (File.Exists(buttonLibPath))
                     LinkCommon.GetPanels(buttonLibPath, out panels);
 
-                System.Diagnostics.Process proc = System.Diagnostics.Process.GetCurrentProcess();
-                IntPtr handle = proc.MainWindowHandle;
+                // Get the version
+                int version = Convert.ToInt32(commandData.Application.Application.VersionNumber);
+
+                // Get the Revit window handle
+                IntPtr handle = IntPtr.Zero;
+                if (version < 2019)
+                    handle = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
+                else
+                    handle = commandData.Application.GetType().GetProperty("MainWindowHandle") != null
+                        ? (IntPtr)commandData.Application.GetType().GetProperty("MainWindowHandle").GetValue(commandData.Application)
+                        : IntPtr.Zero;
                 ManageLinksForm form = new ManageLinksForm(buttonLibPath, panels);
                 System.Windows.Interop.WindowInteropHelper helper = new System.Windows.Interop.WindowInteropHelper(form);
                 helper.Owner = handle;
