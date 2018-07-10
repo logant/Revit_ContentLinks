@@ -572,8 +572,9 @@ namespace Elk.UpdateableLinks
                 {
                     LargeImage = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(Properties.Resources.manageButton.GetHbitmap(), IntPtr.Zero, System.Windows.Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()),
                     ToolTip = "Manage the Updateable Links",
+                    AvailabilityClassName = typeof(ZeroDocAvailability).FullName
                 };
-                managePBD.AvailabilityClassName = "Elk.UpdateableLinks.ZeroDocAvailability";
+
                 RevitCommon.UI.AddToRibbon(application, "Add-Ins", "Links", managePBD);
                 
 
