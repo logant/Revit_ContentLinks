@@ -79,7 +79,7 @@
             <Label Content="Panels:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,40,0,0" FontFamily="Arial" Foreground="#FF404040"/>
             <ListView Name="panelsListView" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="10,60,0,270" Width="150" SelectionChanged="panelsListView_SelectionChanged"/>
             <Button x:Name="panelRemoveButton" Click="panelRemoveButton_Click" Style="{StaticResource TypicalButtonStyle}" ContentTemplate="{StaticResource ButtonContentTemplate}"
-                    HorizontalAlignment="Left" Width="60" Height="30" VerticalAlignment="Bottom" Margin="100,0,0,240" Content="Remove"/>
+                    HorizontalAlignment="Left" Width="80" Height="30" VerticalAlignment="Bottom" Margin="80,0,0,240" Content="Remove"/>
             
             <GroupBox Header="New Panel" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,265,0,15" Width="150" Height="220">
                 <Grid>
@@ -96,7 +96,7 @@
             <Label Content="Buttons:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="170,40,0,0" FontFamily="Arial" Foreground="#FF404040"/>
             <ListView Name="buttonsListView" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="170,60,0,270" Width="150" SelectionChanged="buttonsListView_SelectionChanged" ItemsSource="{Binding buttonList}" />
             <Button x:Name="buttonRemoveButton" Click="buttonRemoveButton_Click" Style="{StaticResource TypicalButtonStyle}" ContentTemplate="{StaticResource ButtonContentTemplate}"
-                    HorizontalAlignment="Left" Width="60" Height="30" VerticalAlignment="Bottom" Margin="260,230,0,240" Content="Remove"/>
+                    HorizontalAlignment="Left" Width="80" Height="30" VerticalAlignment="Bottom" Margin="240,230,0,240" Content="Remove"/>
             <GroupBox Header="New Button" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="170,0,0,15" Width="150" Height="220">
                 <Grid>
                     <StackPanel Margin="5,15,5,75">
@@ -113,7 +113,7 @@
             <Label Content="Links:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="330,40,0,0" FontFamily="Arial" Foreground="#FF404040"/>
             <ListView Name="linksListView" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="330,60,0,270" Width="150" SelectionChanged="linksListView_SelectionChanged"/>
             <Button x:Name="linkRemoveButton" Click="linkRemoveButton_Click"  Style="{StaticResource TypicalButtonStyle}" ContentTemplate="{StaticResource ButtonContentTemplate}"
-                    HorizontalAlignment="Left" Width="60" Height="30" VerticalAlignment="Bottom" Margin="420,230,0,240" Content="Remove"/>
+                    HorizontalAlignment="Left" Width="80" Height="30" VerticalAlignment="Bottom" Margin="400,230,0,240" Content="Remove"/>
             
             <Button x:Name="linkEditButton" Click="linkEditButton_Click" Style="{StaticResource TypicalButtonStyle}" ContentTemplate="{StaticResource ButtonContentTemplate}"
                     HorizontalAlignment="Left" Width="60" Height="30" VerticalAlignment="Bottom" Margin="330,230,0,240" Content="Edit"/>

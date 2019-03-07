@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <!-- NOTE: Enable the following command to modify the links. -->
+  <!--
+  <AddIn Type="Application">
+    <Name>HKS Links</Name>
+    <Assembly>HKS.Links.dll</Assembly>
+    <AddInId>b82cbf5e-5cd8-4389-8991-bb39cc7eabf1</AddInId>
+    <FullClassName>Elk.UpdateableLinks.ManageLinkApp</FullClassName>
+    <VendorId>ELKT</VendorId>
+    <VendorDescription>Elk</VendorDescription>
+  </AddIn>
+  -->
+  <AddIn Type="Application">
+    <Name>Elk Links</Name>
+    <Assembly>HKS.Links.dll</Assembly>
+    <AddInId>4595c82b-efee-405a-bb13-3cd8852bbcf8</AddInId>
+    <FullClassName>Elk.UpdateableLinks.LinkApp</FullClassName>
+    <VendorId>ELKT</VendorId>
+    <VendorDescription>Elk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

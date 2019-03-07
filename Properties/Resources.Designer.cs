@@ -19,7 +19,7 @@ namespace Elk.UpdateableLinks.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -66,7 +66,11 @@ namespace Elk.UpdateableLinks.Properties {
         ///{
         ///	public string Name 
         ///	{
-        ///		get { return &quot;[#LINKNAME#]&quot;; }
+        ///		get { return @&quot;[#LINKNAME#]&quot;; }
+        ///	}
+        ///	public string Address
+        ///	{
+        ///		get { return @&quot;[#LINKADDRESS#]&quot;; }
         ///	}
         ///	public string ToolTip
         ///	{
@@ -83,10 +87,6 @@ namespace Elk.UpdateableLinks.Properties {
         ///	public string ButtonType
         ///	{
         ///		get { return &quot;[#BUTTONTYPE#]&quot;; }
-        ///	}
-        ///	public string ButtonName
-        ///	{
-        ///		get { return &quot;[#BUTTONNAME#]&quot;; }
         ///	}
         ///	public string [rest of string was truncated]&quot;;.
         /// </summary>
@@ -111,6 +111,7 @@ namespace Elk.UpdateableLinks.Properties {
         ///using System.Collections.Generic;
         ///using System.Diagnostics;
         ///using System.Reflection;
+        ///using System.Windows;
         ///using Autodesk.Revit;
         ///using Autodesk.Revit.Attributes;
         ///using Autodesk.Revit.DB;
